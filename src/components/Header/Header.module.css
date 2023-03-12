@@ -1,0 +1,23 @@
+.header {
+  grid-area: h;
+  background-color: #424857;
+}
+
+.header img {
+  height: 9vmin;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .header img {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

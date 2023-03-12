@@ -1,0 +1,10 @@
+.item {
+  color: #424857;
+}
+
+.item img {
+  height: 40px;
+  width: 40px;
+  border-radius: 20px;
+  max-height: 40px;
+}
