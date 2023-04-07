@@ -21,3 +21,11 @@
     transform: rotate(360deg);
   }
 }
+
+.login_block {
+  float: right;
+}
+
+.login_block a {
+  color: whitesmoke;
+}
