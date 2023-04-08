@@ -1,7 +1,8 @@
 import React from "react";
 import axios from "axios";
 import {connect} from "react-redux";
-import {Navigate} from "react-router-dom";
+import {withAuthRedirect} from "../../hoc/withAuthRedirect";
+import {compose} from "redux";
 import Profile from "./Profile";
 import {serUserProfile} from "../../redux/profileReducer";
 
@@ -16,18 +17,13 @@ class ProfileContainer extends React.Component {
     }
 
     render() {
-        if (this.props.isAuth === false) {
-            return <Navigate to={"/login"}/>;
-        }
-
         return (<Profile profile={this.props.profile}/>);
     }
 }
 
 function mapStateToProps(state) {
     return {
-        profile: state.profilePage.profile,
-        isAuth: state.auth.isAuth
+        profile: state.profilePage.profile
     };
 }
 
@@ -39,4 +35,4 @@ function mapDispatchToProps(dispatch) {
     };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProfileContainer);
+export default compose(connect(mapStateToProps, mapDispatchToProps), withAuthRedirect)(ProfileContainer);

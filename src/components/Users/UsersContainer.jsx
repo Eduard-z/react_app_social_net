@@ -9,6 +9,8 @@ import {
 } from "../../redux/usersReducer";
 import Users from "./Users";
 import Preloader from "../common/Preloader";
+import {withAuthRedirect} from "../../hoc/withAuthRedirect";
+import {compose} from "redux";
 import {usersAPI} from "../../redux/api";
 
 class UsersAPIComponent extends React.Component {
@@ -105,6 +107,6 @@ function mapDispatchToProps(dispatch) {
     };
 }
 
-const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(UsersAPIComponent);
+const UsersContainer = compose(withAuthRedirect, connect(mapStateToProps, mapDispatchToProps))(UsersAPIComponent);
 
 export default UsersContainer;
