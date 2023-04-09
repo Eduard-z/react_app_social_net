@@ -1,6 +1,6 @@
 import './App.css';
 import Navbar from "./components/Navbar/Navbar";
-import {Route, BrowserRouter, Routes} from "react-router-dom";
+import {Route, Routes, HashRouter} from "react-router-dom";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
@@ -10,7 +10,7 @@ import LoginPage from "./components/Login/Login";
 
 const App = () => {
     return (
-        <BrowserRouter>
+        <HashRouter>
             <div className="app-wrapper">
                 <HeaderContainer/>
                 <Navbar/>
@@ -27,7 +27,7 @@ const App = () => {
                     </Routes>
                 </div>
             </div>
-        </BrowserRouter>
+        </HashRouter>
     );
 };
 
