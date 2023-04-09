@@ -1,6 +1,7 @@
 const ADD_POST = "ADD-POST";
 const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
 const SET_USER_PROFILE = "SET_USER_PROFILE";
+const DELETE_POST = "DELETE_POST";
 
 let initialState = {
     postsData: [
@@ -13,7 +14,7 @@ let initialState = {
 };
 
 const profileReducer = (state=initialState, action) => {
-    let stateCopy = structuredClone(state);
+    let stateCopy = Object.assign({}, state);
 
     switch (action.type) {
         case ADD_POST:
@@ -42,6 +43,9 @@ const profileReducer = (state=initialState, action) => {
             stateCopy.profile = action.profile;
             // return {...state, profile: action.profile}
             break;
+        case DELETE_POST:
+            stateCopy.postsData.filter(post => post.id !== action.postId);
+            break;
         default:
             break;
     }
@@ -52,5 +56,6 @@ const profileReducer = (state=initialState, action) => {
 export const addPostCreator = () => ({type: ADD_POST});
 export const updateNewPostTextCreator = (text) => ({type: UPDATE_NEW_POST_TEXT, newText: text});
 export const serUserProfile = (profile) => ({type: SET_USER_PROFILE, profile});
+export const deletePost = (postId) => ({type: DELETE_POST, postId});
 
 export default profileReducer;
